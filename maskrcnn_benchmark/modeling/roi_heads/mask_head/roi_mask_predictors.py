@@ -2,9 +2,9 @@
 from torch import nn
 from torch.nn import functional as F
 
-from maskrcnn_benchmark.layers import Conv2d
-from maskrcnn_benchmark.layers import ConvTranspose2d
-from maskrcnn_benchmark.modeling import registry
+from mydl.layers import Conv2d
+from mydl.layers import ConvTranspose2d
+from mydl.modeling import registry
 
 
 @registry.ROI_MASK_PREDICTOR.register("MaskRCNNC4Predictor")

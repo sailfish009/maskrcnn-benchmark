@@ -3,10 +3,10 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from maskrcnn_benchmark.structures.bounding_box import BoxList
-from maskrcnn_benchmark.structures.boxlist_ops import boxlist_nms
-from maskrcnn_benchmark.structures.boxlist_ops import cat_boxlist
-from maskrcnn_benchmark.modeling.box_coder import BoxCoder
+from mydl.structures.bounding_box import BoxList
+from mydl.structures.boxlist_ops import boxlist_nms
+from mydl.structures.boxlist_ops import cat_boxlist
+from mydl.modeling.box_coder import BoxCoder
 
 
 class PostProcessor(nn.Module):

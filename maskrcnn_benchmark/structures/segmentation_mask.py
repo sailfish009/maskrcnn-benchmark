@@ -2,8 +2,8 @@ import cv2
 import copy
 import torch
 import numpy as np
-from maskrcnn_benchmark.layers.misc import interpolate
-from maskrcnn_benchmark.utils import cv2_util
+from mydl.layers.misc import interpolate
+from mydl.utils import cv2_util
 import pycocotools.mask as mask_utils
 
 # transpose

@@ -8,13 +8,13 @@ from torch.nn import functional as F
 
 from ..utils import concat_box_prediction_layers
 
-from maskrcnn_benchmark.layers import smooth_l1_loss
-from maskrcnn_benchmark.layers import SigmoidFocalLoss
-from maskrcnn_benchmark.modeling.matcher import Matcher
-from maskrcnn_benchmark.modeling.utils import cat
-from maskrcnn_benchmark.structures.boxlist_ops import boxlist_iou
-from maskrcnn_benchmark.structures.boxlist_ops import cat_boxlist
-from maskrcnn_benchmark.modeling.rpn.loss import RPNLossComputation
+from mydl.layers import smooth_l1_loss
+from mydl.layers import SigmoidFocalLoss
+from mydl.modeling.matcher import Matcher
+from mydl.modeling.utils import cat
+from mydl.structures.boxlist_ops import boxlist_iou
+from mydl.structures.boxlist_ops import cat_boxlist
+from mydl.modeling.rpn.loss import RPNLossComputation
 
 class RetinaNetLossComputation(RPNLossComputation):
     """

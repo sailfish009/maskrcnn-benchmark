@@ -1,6 +1,6 @@
 ## Webcam and Jupyter notebook demo
 
-This folder contains a simple webcam demo that illustrates how you can use `maskrcnn_benchmark` for inference.
+This folder contains a simple webcam demo that illustrates how you can use `mydl` for inference.
 
 
 ### With your preferred environment

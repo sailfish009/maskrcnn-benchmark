@@ -4,10 +4,10 @@ import unittest
 import copy
 import torch
 # import modules to to register predictors
-from maskrcnn_benchmark.modeling.backbone import build_backbone # NoQA
-from maskrcnn_benchmark.modeling.roi_heads.roi_heads import build_roi_heads # NoQA
-from maskrcnn_benchmark.modeling import registry
-from maskrcnn_benchmark.config import cfg as g_cfg
+from mydl.modeling.backbone import build_backbone # NoQA
+from mydl.modeling.roi_heads.roi_heads import build_roi_heads # NoQA
+from mydl.modeling import registry
+from mydl.config import cfg as g_cfg
 from utils import load_config
 
 

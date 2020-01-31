@@ -4,9 +4,9 @@ import unittest
 import copy
 import torch
 # import modules to to register backbones
-from maskrcnn_benchmark.modeling.backbone import build_backbone # NoQA
-from maskrcnn_benchmark.modeling import registry
-from maskrcnn_benchmark.config import cfg as g_cfg
+from mydl.modeling.backbone import build_backbone # NoQA
+from mydl.modeling import registry
+from mydl.config import cfg as g_cfg
 from utils import load_config
 
 

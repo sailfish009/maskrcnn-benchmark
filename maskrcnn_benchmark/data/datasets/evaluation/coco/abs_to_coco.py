@@ -7,8 +7,8 @@ import numpy as np
 import torch
 import pycocotools.mask as mask_util
 
-from maskrcnn_benchmark.data.datasets.abstract import AbstractDataset
-from maskrcnn_benchmark.structures.bounding_box import BoxList
+from mydl.data.datasets.abstract import AbstractDataset
+from mydl.structures.bounding_box import BoxList
 
 import logging
 from datetime import datetime
@@ -27,7 +27,7 @@ def convert_abstract_to_coco(dataset, num_workers=None, chunksize=100):
     format as COCO json files.
 
     By default .coco_eval_wrapper.py saves it to the hard-drive in json format
-    and loads it with the maskrcnn_benchmark's default COCODataset
+    and loads it with the mydl's default COCODataset
 
     Args:
         dataset: any dataset derived from AbstractDataset
@@ -37,7 +37,7 @@ def convert_abstract_to_coco(dataset, num_workers=None, chunksize=100):
             requesting new task. The larger the less overhead there is.
     """
 
-    logger = logging.getLogger("maskrcnn_benchmark.inference")
+    logger = logging.getLogger("mydl.inference")
     assert isinstance(dataset, AbstractDataset)
     # Official COCO annotations have these fields
     # 'info', 'licenses', 'images', 'type', 'annotations', 'categories'
@@ -45,7 +45,7 @@ def convert_abstract_to_coco(dataset, num_workers=None, chunksize=100):
     coco_dict["info"] = {
         "description": (
             "This is an automatically generated COCO annotation"
-            " file using maskrcnn_benchmark"
+            " file using mydl"
         ),
         "date_created": "%s" % datetime.now(),
     }

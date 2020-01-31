@@ -8,10 +8,10 @@ import torch
 import torch.distributed as dist
 from tqdm import tqdm
 
-from maskrcnn_benchmark.data import make_data_loader
-from maskrcnn_benchmark.utils.comm import get_world_size, synchronize
-from maskrcnn_benchmark.utils.metric_logger import MetricLogger
-from maskrcnn_benchmark.engine.inference import inference
+from mydl.data import make_data_loader
+from mydl.utils.comm import get_world_size, synchronize
+from mydl.utils.metric_logger import MetricLogger
+from mydl.engine.inference import inference
 
 from apex import amp
 
@@ -53,7 +53,7 @@ def do_train(
     test_period,
     arguments,
 ):
-    logger = logging.getLogger("maskrcnn_benchmark.trainer")
+    logger = logging.getLogger("mydl.trainer")
     logger.info("Start training")
     meters = MetricLogger(delimiter="  ")
     max_iter = len(data_loader)

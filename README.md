@@ -19,7 +19,7 @@ creating detection and segmentation models using PyTorch 1.0.
 
 ## Webcam and Jupyter notebook demo
 
-We provide a simple webcam demo that illustrates how you can use `maskrcnn_benchmark` for inference:
+We provide a simple webcam demo that illustrates how you can use `mydl` for inference:
 ```bash
 cd demo
 # by default, it runs on the GPU
@@ -51,7 +51,7 @@ can be found in [MODEL_ZOO.md](MODEL_ZOO.md)
 We provide a helper class to simplify writing inference pipelines using pre-trained models.
 Here is how we would do it. Run this from the `demo` folder:
 ```python
-from maskrcnn_benchmark.config import cfg
+from mydl.config import cfg
 from predictor import COCODemo
 
 config_file = "../configs/caffe2/e2e_mask_rcnn_R_50_FPN_1x_caffe2.yaml"
@@ -73,7 +73,7 @@ predictions = coco_demo.run_on_opencv_image(image)
 
 ## Perform training on COCO dataset
 
-For the following examples to work, you need to first install `maskrcnn_benchmark`.
+For the following examples to work, you need to first install `mydl`.
 
 You will also need to download the COCO dataset.
 We recommend to symlink the path to the coco dataset to `datasets/` as follows
@@ -102,7 +102,7 @@ P.S. `COCO_2017_train` = `COCO_2014_train` + `valminusminival` , `COCO_2017_val`
       
 
 You can also configure your own paths to the datasets.
-For that, all you need to do is to modify `maskrcnn_benchmark/config/paths_catalog.py` to
+For that, all you need to do is to modify `mydl/config/paths_catalog.py` to
 point to the location where your dataset is stored.
 You can also create a new `paths_catalog.py` file which implements the same two classes,
 and pass it as a config argument `PATHS_CATALOG` during training.
@@ -115,7 +115,7 @@ In order to be able to run it on fewer GPUs, there are a few possibilities:
 **1. Run the following without modifications**
 
 ```bash
-python /path_to_maskrcnn_benchmark/tools/train_net.py --config-file "/path/to/config/file.yaml"
+python /path_to_mydl/tools/train_net.py --config-file "/path/to/config/file.yaml"
 ```
 This should work out of the box and is very similar to what we should do for multi-GPU training.
 But the drawback is that it will use much more GPU memory. The reason is that we set in the
@@ -151,7 +151,7 @@ process will only use a single GPU.
 
 ```bash
 export NGPUS=8
-python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_maskrcnn_benchmark/tools/train_net.py --config-file "path/to/config/file.yaml" MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN images_per_gpu x 1000
+python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_mydl/tools/train_net.py --config-file "path/to/config/file.yaml" MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN images_per_gpu x 1000
 ```
 Note we should set `MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN` follow the rule in Single-GPU training.
 
@@ -160,7 +160,7 @@ We currently use [APEX](https://github.com/NVIDIA/apex) to add [Automatic Mixed 
 
 ```bash
 export NGPUS=8
-python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_maskrcnn_benchmark/tools/train_net.py --config-file "path/to/config/file.yaml" MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN images_per_gpu x 1000 DTYPE "float16"
+python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_mydl/tools/train_net.py --config-file "path/to/config/file.yaml" MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN images_per_gpu x 1000 DTYPE "float16"
 ```
 If you want more verbose logging, set `AMP_VERBOSE True`. See [Mixed Precision Training guide](https://docs.nvidia.com/deeplearning/sdk/mixed-precision-training/index.html) for more details.
 
@@ -168,9 +168,9 @@ If you want more verbose logging, set `AMP_VERBOSE True`. See [Mixed Precision T
 You can test your model directly on single or multiple gpus. Here is an example for Mask R-CNN R-50 FPN with the 1x schedule on 8 GPUS:
 ```bash
 export NGPUS=8
-python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_maskrcnn_benchmark/tools/test_net.py --config-file "configs/e2e_mask_rcnn_R_50_FPN_1x.yaml" TEST.IMS_PER_BATCH 16
+python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_mydl/tools/test_net.py --config-file "configs/e2e_mask_rcnn_R_50_FPN_1x.yaml" TEST.IMS_PER_BATCH 16
 ```
-To calculate mAP for each class, you can simply modify a few lines in [coco_eval.py](https://github.com/facebookresearch/maskrcnn-benchmark/blob/master/maskrcnn_benchmark/data/datasets/evaluation/coco/coco_eval.py). See [#524](https://github.com/facebookresearch/maskrcnn-benchmark/issues/524#issuecomment-475118810) for more details.
+To calculate mAP for each class, you can simply modify a few lines in [coco_eval.py](https://github.com/facebookresearch/maskrcnn-benchmark/blob/master/mydl/data/datasets/evaluation/coco/coco_eval.py). See [#524](https://github.com/facebookresearch/maskrcnn-benchmark/issues/524#issuecomment-475118810) for more details.
 
 ## Abstractions
 For more information on some of the main abstractions in our implementation, see [ABSTRACTIONS.md](ABSTRACTIONS.md).
@@ -180,7 +180,7 @@ For more information on some of the main abstractions in our implementation, see
 This implementation adds support for COCO-style datasets.
 But adding support for training on a new dataset can be done as follows:
 ```python
-from maskrcnn_benchmark.structures.bounding_box import BoxList
+from mydl.structures.bounding_box import BoxList
 
 class MyDataset(object):
     def __init__(self, ...):
@@ -218,18 +218,18 @@ class MyDataset(object):
 That's it. You can also add extra fields to the boxlist, such as segmentation masks
 (using `structures.segmentation_mask.SegmentationMask`), or even your own instance type.
 
-For a full example of how the `COCODataset` is implemented, check [`maskrcnn_benchmark/data/datasets/coco.py`](maskrcnn_benchmark/data/datasets/coco.py).
+For a full example of how the `COCODataset` is implemented, check [`mydl/data/datasets/coco.py`](mydl/data/datasets/coco.py).
 
 Once you have created your dataset, it needs to be added in a couple of places:
-- [`maskrcnn_benchmark/data/datasets/__init__.py`](maskrcnn_benchmark/data/datasets/__init__.py): add it to `__all__`
-- [`maskrcnn_benchmark/config/paths_catalog.py`](maskrcnn_benchmark/config/paths_catalog.py): `DatasetCatalog.DATASETS` and corresponding `if` clause in `DatasetCatalog.get()`
+- [`mydl/data/datasets/__init__.py`](mydl/data/datasets/__init__.py): add it to `__all__`
+- [`mydl/config/paths_catalog.py`](mydl/config/paths_catalog.py): `DatasetCatalog.DATASETS` and corresponding `if` clause in `DatasetCatalog.get()`
 
 ### Testing
 While the aforementioned example should work for training, we leverage the
 cocoApi for computing the accuracies during testing. Thus, test datasets
 should currently follow the cocoApi for now.
 
-To enable your dataset for testing, add a corresponding if statement in [`maskrcnn_benchmark/data/datasets/evaluation/__init__.py`](maskrcnn_benchmark/data/datasets/evaluation/__init__.py):
+To enable your dataset for testing, add a corresponding if statement in [`mydl/data/datasets/evaluation/__init__.py`](mydl/data/datasets/evaluation/__init__.py):
 ```python
 if isinstance(dataset, datasets.MyDataset):
         return coco_evaluation(**args)

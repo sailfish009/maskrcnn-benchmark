@@ -1,17 +1,17 @@
 import torch
 from torch.nn import functional as F
 
-from maskrcnn_benchmark.modeling.matcher import Matcher
+from mydl.modeling.matcher import Matcher
 
-from maskrcnn_benchmark.modeling.balanced_positive_negative_sampler import (
+from mydl.modeling.balanced_positive_negative_sampler import (
     BalancedPositiveNegativeSampler,
 )
-from maskrcnn_benchmark.structures.boxlist_ops import boxlist_iou
-from maskrcnn_benchmark.modeling.utils import cat
-from maskrcnn_benchmark.layers import smooth_l1_loss
-from maskrcnn_benchmark.structures.boxlist_ops import cat_boxlist
+from mydl.structures.boxlist_ops import boxlist_iou
+from mydl.modeling.utils import cat
+from mydl.layers import smooth_l1_loss
+from mydl.structures.boxlist_ops import cat_boxlist
 
-from maskrcnn_benchmark.structures.keypoint import keypoints_to_heat_map
+from mydl.structures.keypoint import keypoints_to_heat_map
 
 
 def project_keypoints_to_heatmap(keypoints, proposals, discretization_size):

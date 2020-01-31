@@ -10,9 +10,9 @@ from . import (
     fbnet_modeldef as modeldef,
 )
 import torch.nn as nn
-from maskrcnn_benchmark.modeling import registry
-from maskrcnn_benchmark.modeling.rpn import rpn
-from maskrcnn_benchmark.modeling import poolers
+from mydl.modeling import registry
+from mydl.modeling.rpn import rpn
+from mydl.modeling import poolers
 
 
 logger = logging.getLogger(__name__)

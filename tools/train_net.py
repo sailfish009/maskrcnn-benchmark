@@ -5,25 +5,25 @@ Basic training script for PyTorch
 
 # Set up custom environment before nearly anything else is imported
 # NOTE: this should be the first import (no not reorder)
-from maskrcnn_benchmark.utils.env import setup_environment  # noqa F401 isort:skip
+from mydl.utils.env import setup_environment  # noqa F401 isort:skip
 
 import argparse
 import os
 
 import torch
-from maskrcnn_benchmark.config import cfg
-from maskrcnn_benchmark.data import make_data_loader
-from maskrcnn_benchmark.solver import make_lr_scheduler
-from maskrcnn_benchmark.solver import make_optimizer
-from maskrcnn_benchmark.engine.inference import inference
-from maskrcnn_benchmark.engine.trainer import do_train
-from maskrcnn_benchmark.modeling.detector import build_detection_model
-from maskrcnn_benchmark.utils.checkpoint import DetectronCheckpointer
-from maskrcnn_benchmark.utils.collect_env import collect_env_info
-from maskrcnn_benchmark.utils.comm import synchronize, get_rank
-from maskrcnn_benchmark.utils.imports import import_file
-from maskrcnn_benchmark.utils.logger import setup_logger
-from maskrcnn_benchmark.utils.miscellaneous import mkdir, save_config
+from mydl.config import cfg
+from mydl.data import make_data_loader
+from mydl.solver import make_lr_scheduler
+from mydl.solver import make_optimizer
+from mydl.engine.inference import inference
+from mydl.engine.trainer import do_train
+from mydl.modeling.detector import build_detection_model
+from mydl.utils.checkpoint import DetectronCheckpointer
+from mydl.utils.collect_env import collect_env_info
+from mydl.utils.comm import synchronize, get_rank
+from mydl.utils.imports import import_file
+from mydl.utils.logger import setup_logger
+from mydl.utils.miscellaneous import mkdir, save_config
 
 # See if we can use apex.DistributedDataParallel instead of the torch default,
 # and enable mixed-precision via apex.amp
@@ -173,7 +173,7 @@ def main():
     if output_dir:
         mkdir(output_dir)
 
-    logger = setup_logger("maskrcnn_benchmark", output_dir, get_rank())
+    logger = setup_logger("mydl", output_dir, get_rank())
     logger.info("Using {} GPUs".format(num_gpus))
     logger.info(args)
 

@@ -5,7 +5,7 @@ class AbstractDataset(torch.utils.data.Dataset):
     Serves as a common interface to reduce boilerplate and help dataset
     customization
 
-    A generic Dataset for the maskrcnn_benchmark must have the following
+    A generic Dataset for the mydl must have the following
     non-trivial fields / methods implemented:
         CLASSES - list/tuple:
             A list of strings representing the classes. It must have

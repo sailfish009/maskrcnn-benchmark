@@ -1,5 +1,5 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
-from maskrcnn_benchmark.modeling import registry
+from mydl.modeling import registry
 from torch import nn
 
 

@@ -47,8 +47,8 @@ import torch
 import logging
 
 import numpy as np
-from maskrcnn_benchmark.modeling.roi_heads.mask_head.inference import Masker
-from maskrcnn_benchmark.layers.misc import interpolate
+from mydl.modeling.roi_heads.mask_head.inference import Masker
+from mydl.layers.misc import interpolate
 
 # Cityscapes imports
 from cityscapesscripts.helpers.csHelpers import writeDict2JSON

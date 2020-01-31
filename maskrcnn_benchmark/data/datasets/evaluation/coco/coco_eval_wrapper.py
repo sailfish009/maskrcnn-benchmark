@@ -5,7 +5,7 @@ import logging
 import os
 import json
 
-from maskrcnn_benchmark.data.datasets.coco import COCODataset
+from mydl.data.datasets.coco import COCODataset
 from .coco_eval import do_coco_evaluation as orig_evaluation
 from .abs_to_coco import convert_abstract_to_coco
 
@@ -20,7 +20,7 @@ def do_coco_evaluation(
     expected_results_sigma_tol,
 ):
 
-    logger = logging.getLogger("maskrcnn_benchmark.inference")
+    logger = logging.getLogger("mydl.inference")
     logger.info("Converting annotations to COCO format...")
     coco_annotation_dict = convert_abstract_to_coco(dataset)
 

@@ -18,13 +18,13 @@
 # for that, check that `which conda`, `which pip` and `which python` points to the
 # right path. From a clean conda env, this is what you need to do
 
-conda create --name maskrcnn_benchmark -y
-conda activate maskrcnn_benchmark
+conda create --name mydl -y
+conda activate mydl
 
 # this installs the right pip and dependencies for the fresh python
 conda install ipython pip
 
-# maskrcnn_benchmark and coco api dependencies
+# mydl and coco api dependencies
 pip install ninja yacs cython matplotlib tqdm opencv-python
 
 # follow PyTorch installation in https://pytorch.org/get-started/locally/
@@ -72,13 +72,13 @@ unset INSTALL_DIR
 ```bash
 open a cmd and change to desired installation directory
 from now on will be refered as INSTALL_DIR
-conda create --name maskrcnn_benchmark
-conda activate maskrcnn_benchmark
+conda create --name mydl
+conda activate mydl
 
 # this installs the right pip and dependencies for the fresh python
 conda install ipython
 
-# maskrcnn_benchmark and coco api dependencies
+# mydl and coco api dependencies
 pip install ninja yacs cython matplotlib tqdm opencv-python
 
 # follow PyTorch installation in https://pytorch.org/get-started/locally/

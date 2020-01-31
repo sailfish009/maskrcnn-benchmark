@@ -12,10 +12,10 @@ from .utils import concat_box_prediction_layers
 from ..balanced_positive_negative_sampler import BalancedPositiveNegativeSampler
 from ..utils import cat
 
-from maskrcnn_benchmark.layers import smooth_l1_loss
-from maskrcnn_benchmark.modeling.matcher import Matcher
-from maskrcnn_benchmark.structures.boxlist_ops import boxlist_iou
-from maskrcnn_benchmark.structures.boxlist_ops import cat_boxlist
+from mydl.layers import smooth_l1_loss
+from mydl.modeling.matcher import Matcher
+from mydl.structures.boxlist_ops import boxlist_iou
+from mydl.structures.boxlist_ops import cat_boxlist
 
 
 class RPNLossComputation(object):

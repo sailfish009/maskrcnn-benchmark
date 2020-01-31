@@ -3,12 +3,12 @@ import torch
 from ..inference import RPNPostProcessor
 from ..utils import permute_and_flatten
 
-from maskrcnn_benchmark.modeling.box_coder import BoxCoder
-from maskrcnn_benchmark.modeling.utils import cat
-from maskrcnn_benchmark.structures.bounding_box import BoxList
-from maskrcnn_benchmark.structures.boxlist_ops import cat_boxlist
-from maskrcnn_benchmark.structures.boxlist_ops import boxlist_nms
-from maskrcnn_benchmark.structures.boxlist_ops import remove_small_boxes
+from mydl.modeling.box_coder import BoxCoder
+from mydl.modeling.utils import cat
+from mydl.structures.bounding_box import BoxList
+from mydl.structures.boxlist_ops import cat_boxlist
+from mydl.structures.boxlist_ops import boxlist_nms
+from mydl.structures.boxlist_ops import remove_small_boxes
 
 
 class RetinaNetPostProcessor(RPNPostProcessor):

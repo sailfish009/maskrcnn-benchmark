@@ -9,8 +9,8 @@ import torch
 import torchvision
 
 
-from maskrcnn_benchmark.structures.bounding_box import BoxList
-from maskrcnn_benchmark.structures.segmentation_mask import SegmentationMask
+from mydl.structures.bounding_box import BoxList
+from mydl.structures.segmentation_mask import SegmentationMask
 from .abstract import AbstractDataset
 
 from cityscapesscripts.helpers import csHelpers

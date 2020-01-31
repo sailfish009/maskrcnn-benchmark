@@ -1,11 +1,11 @@
 import torch
 import torchvision.transforms as TT
 
-from maskrcnn_benchmark.config import cfg
-from maskrcnn_benchmark.data import transforms as T
-from maskrcnn_benchmark.structures.image_list import to_image_list
-from maskrcnn_benchmark.structures.bounding_box import BoxList
-from maskrcnn_benchmark.modeling.roi_heads.box_head.inference import make_roi_box_post_processor
+from mydl.config import cfg
+from mydl.data import transforms as T
+from mydl.structures.image_list import to_image_list
+from mydl.structures.bounding_box import BoxList
+from mydl.modeling.roi_heads.box_head.inference import make_roi_box_post_processor
 
 
 def im_detect_bbox_aug(model, images, device):

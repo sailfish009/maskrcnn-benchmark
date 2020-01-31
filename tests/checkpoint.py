@@ -7,8 +7,8 @@ import unittest
 import torch
 from torch import nn
 
-from maskrcnn_benchmark.utils.model_serialization import load_state_dict
-from maskrcnn_benchmark.utils.checkpoint import Checkpointer
+from mydl.utils.model_serialization import load_state_dict
+from mydl.utils.checkpoint import Checkpointer
 
 
 class TestCheckpointer(unittest.TestCase):

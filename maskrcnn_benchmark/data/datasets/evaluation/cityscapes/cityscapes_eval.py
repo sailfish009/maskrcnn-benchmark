@@ -9,11 +9,11 @@ from copy import deepcopy
 import torch
 import numpy as np
 
-from maskrcnn_benchmark.modeling.roi_heads.mask_head.inference import Masker
-from maskrcnn_benchmark.structures.bounding_box import BoxList
-from maskrcnn_benchmark.structures.boxlist_ops import boxlist_iou
+from mydl.modeling.roi_heads.mask_head.inference import Masker
+from mydl.structures.bounding_box import BoxList
+from mydl.structures.boxlist_ops import boxlist_iou
 
-from maskrcnn_benchmark.data.datasets.evaluation.cityscapes import eval_instances
+from mydl.data.datasets.evaluation.cityscapes import eval_instances
 
 
 from cityscapesscripts.helpers.csHelpers import writeDict2JSON, ensurePath
@@ -29,7 +29,7 @@ def do_cityscapes_evaluation(
     expected_results_sigma_tol,
 ):
 
-    logger = logging.getLogger("maskrcnn_benchmark.inference")
+    logger = logging.getLogger("mydl.inference")
     logger.info(f"CityScapes evaluation on [{dataset}]:")
     # Set default args for evaluation
     args = deepcopy(eval_instances.defaultArgs)
